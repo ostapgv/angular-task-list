@@ -1,0 +1,30 @@
+<pre>Sorting predicate = {{vm.predicate}}; reverse = {{vm.reverse}}</pre>
+<hr/>
+[ <a href="" ng-click="vm.predicate=''">unsorted</a> ]
+<table id='task-table'>
+  <thead>
+    <tr>
+      <th>
+        <a href="" ng-click="vm.order('title')">Task</a>
+        <span class="sortorder" ng-show="vm.predicate === 'title'" ng-class="{reverse:vm.reverse}"></span>
+      </th>
+      <th>
+        <a href="" ng-click="vm.order('priority')">Priority</a>
+        <span class="sortorder" ng-show="vm.predicate === 'priority'" ng-class="{reverse:vm.reverse}"></span>
+      </th>
+      <th>
+        <a href="" ng-click="vm.order('endDate')">End Date</a>
+        <span class="sortorder" ng-show="vm.predicate === 'endDate'" ng-class="{reverse:vm.reverse}"></span>
+      </th>
+      <th>Active</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat='task in vm.tasks | orderBy:vm.predicate:vm.reverse' ng-dblClick='vm.showTaskDetails(task.id)'>
+      <td ng-bind='::task.title'></td>
+      <td ng-bind='::task.priority'></td>
+      <td ng-bind='::task.endDate | date : "dd.MM.yyyy"'></td>
+      <td><input type='checkbox' ng-checked='task.isActive'></td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,6 @@
+<form class='task-view'>
+  <input name='id' type='hidden' data-ng-model='vm.task.id'>
+  <input name='title' type="text" ng-model="vm.task.title">
+  <input name='priority' type='number' min='1' max='10' data-ng-model='vm.task.priority' ng-init='task.priority = task.priority || 1'>
+  <input name='end-date' type='date' data-ng-model='vm.task.endDate'>
+</form>
