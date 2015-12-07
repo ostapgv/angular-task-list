@@ -1,5 +1,8 @@
 function TaskController ($scope, Tasks, $routeParams) {
-  this.task = Tasks[$routeParams.id] || {};
+  //this.task = Tasks[$routeParams.id] || {};
+  var machedTasks = $.grep(Tasks, function(e){ return e.id == $routeParams.id; });
+  this.task = machedTasks[0] || {};
+
 }
 TaskController.prototype.removeAllTasks = function() {
   localStorage.clear();
