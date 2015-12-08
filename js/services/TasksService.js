@@ -1,18 +1,55 @@
-app.factory('Tasks', function () {
+app.service('TasksService', function () {
 
-  function getTasks() {
-    var tasks = {};
+  this.getAllTasks = function() {
+    var tasks = [];
     var keys = Object.keys(localStorage);
     var i = keys.length;
+    var task;
     while ( i-- ) {
-      archive[ keys[i] ] = localStorage.getItem( keys[i] );
+      task = this.getTask(keys[i]);
+      if(task) {
+        tasks.push(task);
+      }
     }
     return tasks;
-  }
+  };
+
+  this.removeAllTasks = function() {
+    localStorage.clear();
+  };
+
+  this.getTask = function(id) {
+    try {
+      var task = angular.fromJson(localStorage.getItem(id));
+      task.endDate = new Date(task.endDate);
+      return task;
+    } catch(e) {
+      console.dir(e);
+    }
+  };
+
+  this.setTask = function(task) {
+    localStorage.setItem(task.id || this.guid(), angular.toJson(task));
+  };
+
+  this.removeTask = function(id) {
+    localStorage.removeItem(id);
+  };
+  // GUID generator
+  this.guid = function() {
+    function s4() {
+      return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+    }
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+      s4() + '-' + s4() + s4() + s4();
+  };
 
   // Test data initialization
-  // TODO replace to the local storage impl
-  return [
+/*
+  this.removeAllTasks();
+  var testTasksData = [
     {
       'id': 'de772c9e-9d18-1c96-77ac-7bc52d92a2c9',
       'title': 'Create tests for tests',
@@ -38,4 +75,11 @@ app.factory('Tasks', function () {
       'description': 'I\'m not so alive without it'
     }
   ];
+  var i = 0;
+  var l = testTasksData.length;
+  for(; i < l; i++) {
+    this.setTask(testTasksData[i]);
+  }
+*/
+
 });

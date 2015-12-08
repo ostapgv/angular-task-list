@@ -1,6 +1,20 @@
-<form class='task-view'>
-  <input name='id' type='hidden' data-ng-model='vm.task.id'>
-  <input name='title' type="text" ng-model="vm.task.title">
-  <input name='priority' type='number' min='1' max='10' data-ng-model='vm.task.priority' ng-init='task.priority = task.priority || 1'>
-  <input name='end-date' type='date' data-ng-model='vm.task.endDate'>
+<form ng-submit='vm.saveTask()' class='task-view'>
+  <input name='task-id' type='hidden' ng-model='vm.task.id'>
+
+  <label for='task-title'>Task</label>
+  <input name='task-title' type='text' ng-model='vm.task.title' placeholder='Type short task title' ng-init='vm.task.title = vm.task.title || ""'>
+
+  <label for='task-priority'>Priority</label>
+  <input name='task-priority' type='number' min='1' max='10' ng-model='vm.task.priority' ng-init='vm.task.priority = vm.task.priority || vm.defaultPrioroty'>
+
+  <label for='task-end-date'>End Date</label>
+  <input name='task-end-date' type='date' ng-model='vm.task.endDate' ng-init='vm.task.endDate = vm.task.endDate || vm.defaultDate'>
+
+  <label for='task-end-date'>Active</label>
+  <input name='task-is-active' type='checkbox' ng-model='vm.task.isActive'
+    ng-init='vm.task.isActive = vm.currentIsActive'>
+  <br>
+  <textarea name='description' rows='4' cols='50' ng-model='vm.task.description'></textarea>
+
+  <input type='submit' id='submit' value='Save' />
 </form>

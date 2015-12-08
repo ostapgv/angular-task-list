@@ -1,30 +1,37 @@
-function TaskController ($scope, Tasks, $routeParams) {
-  //this.task = Tasks[$routeParams.id] || {};
-  var machedTasks = $.grep(Tasks, function(e){ return e.id == $routeParams.id; });
-  this.task = machedTasks[0] || {};
+function TaskController ($scope, TasksService, $location, $routeParams) {
+  this.TasksService = TasksService;
+  this.$location = $location;
+  this.tasks = TasksService.getAllTasks();
 
+  var matchedTasks = this.tasks.filter(function(task) {
+    return task.id === $routeParams.id;
+  });
+  this.task = matchedTasks[0] || {};
+
+  this.defaultPrioroty = 1;
+  this.defaultDate = new Date();
+  this.defaultDate.setDate(this.defaultDate.getDate() + 1);
+  this.defaultIsActive = true;
+  this.currentIsActive = (typeof this.task.isActive !== 'undefined') ?
+    this.task.isActive :
+    this.task.defaultIsActive;
 }
-TaskController.prototype.removeAllTasks = function() {
-  localStorage.clear();
-}
-TaskController.prototype.getTask = function(id) {
-  return JSON.parse(localStorage.getItem(id));
-};
-TaskController.prototype.setTask = function(task) {
-  localStorage.setItem(task.id || guid(), JSON.stringify(task));
-};
-TaskController.prototype.removeTask = function(id) {
-  localStorage.removeItem(id);
-};
-  // GUID generator
-TaskController.prototype.guid = function() {
-  function s4() {
-    return Math.floor((1 + Math.random()) * 0x10000)
-      .toString(16)
-      .substring(1);
+
+angular.extend(TaskController.prototype, {
+
+  saveTask: function() {
+    var task = {
+      'id': this.task.id || this.TasksService.guid(),
+      'title': this.task.title || '',
+      'priority': this.task.priority,
+      'endDate': this.task.endDate,
+      'isActive': this.task.isActive,
+      'description': this.task.description
+    };
+    this.TasksService.setTask(task);
+    this.$location.url('/');
   }
-  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-    s4() + '-' + s4() + s4() + s4();
-}
 
-app.controller('TaskController', ['$scope', 'Tasks', '$routeParams', TaskController]);
+});
+
+app.controller('TaskController', ['$scope', 'TasksService', '$location', '$routeParams', TaskController]);
