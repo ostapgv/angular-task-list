@@ -1,14 +1,17 @@
-<form ng-submit='vm.saveTask()' class='task-view'>
+<form name='task-form' ng-submit='vm.saveTask()' class='task-view'>
   <input name='task-id' type='hidden' ng-model='vm.task.id'>
 
   <label for='task-title'>Task</label>
-  <input name='task-title' type='text' ng-model='vm.task.title' placeholder='Type short task title' ng-init='vm.task.title = vm.task.title || ""'>
+  <input name='task-title' type='text' ng-model='vm.task.title' placeholder='Type short task title' ng-init='vm.task.title = vm.task.title || ""' required>
+  <span class="error" ng-show="task-form.task-title.$error.required">Task is required!</span>
 
   <label for='task-priority'>Priority</label>
   <input name='task-priority' type='number' min='1' max='10' ng-model='vm.task.priority' ng-init='vm.task.priority = vm.task.priority || vm.defaultPrioroty'>
+  <span class="error" ng-show="task-form.task-title.$error.$valid">Priority must be from 1 to 10!</span>
 
   <label for='task-end-date'>End Date</label>
-  <input name='task-end-date' type='date' ng-model='vm.task.endDate' ng-init='vm.task.endDate = vm.task.endDate || vm.defaultDate'>
+  <input name='task-end-date' type='date' ng-model='vm.task.endDate' ng-init='vm.task.endDate = vm.task.endDate || vm.defaultDate' required>
+  <span class="error" ng-show="task-form.task-title.$error.required">End Date is required!</span>
 
   <label for='task-end-date'>Active</label>
   <input name='task-is-active' type='checkbox' ng-model='vm.task.isActive'

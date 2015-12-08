@@ -22,6 +22,12 @@ angular.extend(TaskListController.prototype, {
   showTaskDetails: function(id) {
     this.$location.url('/task/'+id);
   },
+
+  // Show task list by redirection to the tasks url
+  showTasks: function() {
+    this.$location.url('/#/');
+  },
+
   // Get the array of filtered tasks, based on isActiveFilter
   getFilteredTasks: function(isActiveFilter) {
     if(isActiveFilter === undefined) {

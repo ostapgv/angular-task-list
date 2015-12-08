@@ -41,6 +41,7 @@
           <span class="sortorder" ng-show="vm.predicate === 'endDate'" ng-class="{reverse:vm.reverse}"></span>
         </th>
         <th>Active</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -49,6 +50,7 @@
         <td ng-bind='::task.priority'></td>
         <td ng-bind='::task.endDate | date : "dd.MM.yyyy"'></td>
         <td><input type='checkbox' ng-checked='task.isActive' ng-model="task.isActive" ng-change='vm.TasksService.setTask(task)'></td>
+        <td><input type='button' value='delete' ng-really-click='vm.TasksService.removeTask(task.id);vm.showTasks();' ng-really-message='Are you sure, you want to delete task "{{task.title}}"?'></td>
       </tr>
     </tbody>
   </table>

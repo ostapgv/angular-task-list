@@ -9,7 +9,7 @@ describe('application', function() {
     $controller = _$controller_;
   }));
 
-  describe('TaskController', function() {
+  describe('TasksService', function() {
     var $scope, tasks, controller, newTask, newTaskId, TasksService;
 
     beforeEach(function() {

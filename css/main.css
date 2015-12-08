@@ -1,6 +1,11 @@
 .sortorder:after {
   content: '\25b2';
 }
+
 .sortorder.reverse:after {
   content: '\25bc';
+}
+
+.error {
+  border: 2px dashed red;
 }
