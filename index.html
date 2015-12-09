@@ -5,28 +5,33 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link type="text/css" rel="stylesheet" href="./node_modules/normalize.css/normalize.css">
   <link type="text/css" rel="stylesheet" href="./css/main.css">
   <title>Angular task list</title>
 </head>
 
 <body ng-app="app">
 
-  <header>
-    <nav>
-      <ul>
-        <li><a href="/#/">Task List</a></li>
-        <li><a href="/#/task/new">New task</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div class="wrapper">
 
-  <section class='main'>
-    <div ng-view></div>
-  </section>
+    <header class="header">
+      <nav>
+        <ul ng-init='activeMenu="tasks"'>
+          <li><a href='/#/' ng-class='{"active": activeMenu === "tasks"}' ng-click='activeMenu="tasks"'>Task List</a></li>
+          <li><a href='/#/task/new"' ng-class='{"active": activeMenu === "task"}' ng-click='activeMenu="task"'>New task</a></li>
+        </ul>
+      </nav>
+    </header><!-- .header-->
 
-  <footer>
-    <p>Copyright 2015 Grigory Ostapenko</p>
-  </footer>
+    <main class="content">
+      <div ng-view></div>
+    </main><!-- .content -->
+
+    <footer class="footer">
+      <p>Copyright 2015 Grigory Ostapenko</p>
+    </footer><!-- .footer -->
+
+  </div><!-- .wrapper -->
 
   <!-- External Dependancies -->
   <script src="./node_modules/angular/angular.js"></script>

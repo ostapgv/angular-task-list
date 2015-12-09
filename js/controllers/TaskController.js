@@ -1,4 +1,5 @@
 function TaskController ($scope, TasksService, $location, $routeParams) {
+  this.$scope = $scope;
   this.TasksService = TasksService;
   this.$location = $location;
   this.tasks = TasksService.getAllTasks();
@@ -25,11 +26,15 @@ angular.extend(TaskController.prototype, {
       'title': this.task.title || '',
       'priority': this.task.priority,
       'endDate': this.task.endDate,
-      'isActive': this.task.isActive,
+      'isActive': this.task.isActive || false,
       'description': this.task.description
     };
     this.TasksService.setTask(task);
     this.$location.url('/');
+  },
+
+  isInvalid: function(field){
+    return this.$scope.taskForm[field].$invalid && this.$scope.taskForm[field].$dirty;
   }
 
 });

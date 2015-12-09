@@ -1,31 +1,35 @@
 <section class='task-debug-info'>
-  <pre>
-    sorting predicate = {{vm.predicate}}
-    reverse = {{vm.reverse}}
-    search string = {{vm.search}}
-    isActiveFilter = {{vm.isActiveFilter}}
-  </pre>
-  <hr/>
-  [ <a href="" ng-click="vm.predicate=''">unsorted</a> ]
 </section>
 
 <section class='task-filters'>
 
-  <ul class='is-active-task-filter'>
-    <li><a href="" ng-click='vm.isActiveFilter=undefined'>All</a></li>
-    <li><a href="" ng-click='vm.isActiveFilter=true'>Active</a></li>
-    <li><a href="" ng-click='vm.isActiveFilter=false'>Completed</a></li>
-  </ul>
+  <!--[ <a href='' ng-click='vm.predicate=""'>unsorted</a> ]-->
 
-  <form class='task-search'>
-    <input type="text" class="task-search-input" placeholder="Search the task" ng-model="vm.search">
-  </form>
+  <ul class='is-active-task-filter'>
+    <li><a href='' ng-class='{"active": vm.isActiveFilter === undefined}' ng-click='vm.isActiveFilter=undefined'>All</a></li>
+    <li><a href='' ng-class='{"active": vm.isActiveFilter === true}' ng-click='vm.isActiveFilter=true'>Active</a></li>
+    <li><a href='' ng-class='{"active": vm.isActiveFilter === false}' ng-click='vm.isActiveFilter=false'>Completed</a></li>
+    <ul>
+      <li>
+        <span class='task-search'>
+          <label for='taskSearch'>Search tasks:</label>
+          <input type='text' name='taskSearch' class='task-search-input' placeholder='Search the task' ng-model='vm.search'>
+        </span>
+      </li>
+    </ul>
+  </ul>
 
 </section>
 
-
 <section class='task-table'>
   <table id='task-table'>
+    <colgroup>
+      <col width='50%'></col>
+      <col width='15%'></col>
+      <col width='15%'></col>
+      <col width='10%'></col>
+      <col width='10%'></col>
+    </colgroup>
     <thead>
       <tr>
         <th>

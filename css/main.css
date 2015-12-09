@@ -6,6 +6,160 @@
   content: '\25bc';
 }
 
+/*
 .error {
   border: 2px dashed red;
+}
+
+.task-form.ng-invalid {
+  background: red;
+}
+*/
+
+/* Template */
+
+body {
+  font: 12px/18px Arial, sans-serif;
+  width: 100%;
+}
+
+.wrapper {
+  min-width: 300px;
+  margin: 0 auto;
+}
+
+.header {
+  margin: 1em 0 0 0;
+}
+
+.content {
+  padding: 2em;
+}
+
+
+.footer {
+  padding: 2em;
+  color: #666;
+  background-color: #F3F3F3;
+  border: 1px solid #E7E7E7;
+}
+
+
+.header ul,
+.task-filters ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #E7E7E7;
+  background-color: #F3F3F3;
+}
+
+.header li,
+.task-filters li{
+    float: left;
+}
+
+.header li a,
+.task-filters li a{
+  display: block;
+  color: #666;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.header li a:hover:not(.active),
+.task-filters li a:hover:not(.active){
+  background-color: #DDD;
+}
+
+.header li a.active,
+.task-filters li a.active{
+  color: white;
+  background-color: #4CAF50;
+}
+
+.task-filters > ul > ul {
+  float: right;
+  list-style-type: none;
+  border: 0;
+}
+
+.task-filters > ul > ul .task-search {
+  display: inline-block;
+  padding: 1em;
+}
+
+.task-filters > ul > ul input {
+  width: 200px;
+  padding: 0.3em 0 0.3em 0;
+}
+
+/* Tasks */
+
+#task-table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #E7E7E7;
+}
+
+#task-table th,
+#task-table td {
+  text-align: left;
+  padding: 1em;
+}
+
+#task-table thead tr {
+  background-color: #F3F3F3;
+  border: 1px solid #E7E7E7;
+  color: #666;
+}
+
+#task-table thead tr a{
+  text-decoration: none;
+  color: #666;
+}
+
+#task-table tbody tr {
+  cursor: pointer;
+}
+
+#task-table tbody tr:hover {
+  background-color: #CECECE;
+}
+
+#task-table tr:nth-child(even) {
+  background-color: #F2F2F2;
+}
+
+/* Task */
+
+.field {
+  padding: 0.3em 0 0.3em 0;
+}
+
+.field label,
+.field textarea{
+  display:inline-block;
+  vertical-align:middle;
+}
+
+.field label {
+  width: 6em;
+}
+
+.field input:not([type='checkbox']),
+.field textarea {
+  width: 400px;
+}
+
+.field input:not([type='checkbox']) {
+  padding: 0.3em 0 0.3em 0;
+}
+
+@media all and (min-width: 992px) {
+  .wrapper {
+    width: 992px;
+  }
 }

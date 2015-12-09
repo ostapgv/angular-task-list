@@ -9,5 +9,5 @@ app.directive('ngReallyClick', [function() {
                 }
             });
         }
-    }
+    };
 }]);

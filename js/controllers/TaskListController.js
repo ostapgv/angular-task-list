@@ -9,7 +9,6 @@ function TaskListController ($scope, TasksService, $location) {
   this.reverse = true;
   this.isActiveFilter = undefined;
   this.search = '';
-
 }
 
 angular.extend(TaskListController.prototype, {
