@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link type="text/css" rel="stylesheet" href="./node_modules/normalize.css/normalize.css">
-  <link type="text/css" rel="stylesheet" href="./css/main.css">
+  <link type="text/css" rel="stylesheet" href="./css/app.css">
   <title>Angular task list</title>
 </head>
 
@@ -15,12 +15,7 @@
   <div class="wrapper">
 
     <header class="header">
-      <nav>
-        <ul ng-init='activeMenu="tasks"'>
-          <li><a href='/#/' ng-class='{"active": activeMenu === "tasks"}' ng-click='activeMenu="tasks"'>Task List</a></li>
-          <li><a href='/#/task/new"' ng-class='{"active": activeMenu === "task"}' ng-click='activeMenu="task"'>New task</a></li>
-        </ul>
-      </nav>
+      <h1><a href="">Angular Task List</a></h1>
     </header><!-- .header-->
 
     <main class="content">
@@ -50,7 +45,8 @@
   <script src="./js/controllers/TaskController.js"></script>
 
   <!-- Directives -->
-  <script src="./js/directives/ngReallyClick.js"></script>
+  <script src="./js/directives/reallyClick.js"></script>
+  <script src="./js/directives/modalDialog.js"></script>
 
   <!-- Services -->
   <script src="./js/services/TasksService.js"></script>

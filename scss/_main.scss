@@ -1,0 +1,170 @@
+/* Template */
+body {
+  font: 0.8em Arial, sans-serif;
+
+  .wrapper {
+    min-width: $min-width;
+    margin: 0 auto;
+    /* Layout */
+    .header,
+    .footer {
+      padding: 1em;
+      color: $common-text-color;
+      background-color: $common-background-color;
+      border: $common-border;
+    }
+    .header a {
+      text-decoration: none;
+      color: $common-text-color;
+    }
+    .content {
+      padding: 2em;
+    }
+    /* Menu */
+    .menu ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      border: $common-border;
+      background-color: $common-background-color;
+      > ul {
+        float: right;
+        list-style-type: none;
+        border: 0;
+        .task-search {
+          display: inline-block;
+          padding: 0.6em;
+        }
+        input {
+          width: 200px;
+          padding: 0.3em 0 0.3em 0;
+        }
+      }
+    }
+    .menu li {
+      float: left;
+    }
+    .menu li a {
+      display: block;
+      color: $common-text-color;
+      text-align: center;
+      padding: 1em;
+      text-decoration: none;
+    }
+    .menu li a:hover:not(.active) {
+      background-color: $menu-hover-background;
+    }
+    .menu li a.active {
+      color: white;
+      background-color: $menu-active-background;
+    }
+
+  }
+}
+
+/* Tasks */
+
+#task-table {
+  border-collapse: collapse;
+  width: 100%;
+  border: $common-border;
+  th, td {
+    text-align: left;
+    padding: 1em;
+  }
+  thead tr {
+    background-color: $common-background-color;
+    border: $common-border;
+    color: $common-text-color;
+    a {
+      text-decoration: none;
+      color: $common-text-color;
+    }
+    span.sortorder {
+      &:after {
+        content: '\25b2';
+      }
+      &.reverse:after {
+        content: '\25bc';
+      }
+    }
+  }
+  tbody tr {
+    cursor: pointer;
+    &:hover {
+      background-color: $table-tr-active-background;
+    }
+  }
+  tr:nth-child(even) {
+    background-color: $table-tr-even-background;
+  }
+}
+
+/* Task */
+
+.field {
+  padding: 0.3em 0 0.3em 0;
+  label, textarea {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  label {
+    width: 6em;
+  }
+  input:not([type='checkbox']), textarea {
+    width: 400px;
+  }
+  input:not([type='checkbox']) {
+    padding: 0.3em 0 0.3em 0;
+  }
+  textarea {
+    resize: none;
+  }
+  .error {
+    color: red;
+  }
+}
+
+.modal {
+  border: $common-border;
+  background-color: $common-background-color;
+  display: inline-block;
+  position: relative;
+  width: 600px;
+  margin-left: -300px;
+  height: 400px;
+  margin-top: -200px;
+}
+
+.modal-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.5); /*dim the background*/
+  .centerpoint {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    .dialog {
+      border: $common-border;
+      background-color: $common-background-color;
+      position: relative;
+      width: 500px;
+      margin-left: -255px;
+      height: 300px;
+      margin-top: -160px;
+      padding: 20px 10px 0 10px;
+    }
+  }
+}
+
+
+@media all and (min-width: 992px) {
+  .wrapper {
+    width: 992px;
+  }
+}

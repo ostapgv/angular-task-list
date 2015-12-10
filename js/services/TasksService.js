@@ -46,7 +46,7 @@ app.service('TasksService', function () {
       s4() + '-' + s4() + s4() + s4();
   };
 
-  // Test data initialization
+// Test data initialization (uncomment to initialize records in the local storage)
 /*
   this.removeAllTasks();
   var testTasksData = [

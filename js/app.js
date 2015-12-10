@@ -7,8 +7,10 @@ app.config(function ($routeProvider) {
       templateUrl: 'js/views/tasks.html'
     })
     .when('/task/:id', {
-      controller: 'TaskController as vm',
-      templateUrl: 'js/views/task.html'
+      controller: 'TaskListController as vm',
+      templateUrl: 'js/views/tasks.html'
+    //  controller: 'TaskController as vm',
+    //  templateUrl: 'js/views/task.html'
     })
     .otherwise({
       redirectTo: '/'

@@ -1,10 +1,5 @@
-<section class='task-debug-info'>
-</section>
-
-<section class='task-filters'>
-
+<section class='task-filters menu'>
   <!--[ <a href='' ng-click='vm.predicate=""'>unsorted</a> ]-->
-
   <ul class='is-active-task-filter'>
     <li><a href='' ng-class='{"active": vm.isActiveFilter === undefined}' ng-click='vm.isActiveFilter=undefined'>All</a></li>
     <li><a href='' ng-class='{"active": vm.isActiveFilter === true}' ng-click='vm.isActiveFilter=true'>Active</a></li>
@@ -18,7 +13,6 @@
       </li>
     </ul>
   </ul>
-
 </section>
 
 <section class='task-table'>
@@ -45,7 +39,7 @@
           <span class="sortorder" ng-show="vm.predicate === 'endDate'" ng-class="{reverse:vm.reverse}"></span>
         </th>
         <th>Active</th>
-        <th></th>
+        <th><input type='button' ng-click='vm.showNewTask()' value='Add'></th>
       </tr>
     </thead>
     <tbody>
@@ -54,7 +48,7 @@
         <td ng-bind='::task.priority'></td>
         <td ng-bind='::task.endDate | date : "dd.MM.yyyy"'></td>
         <td><input type='checkbox' ng-checked='task.isActive' ng-model="task.isActive" ng-change='vm.TasksService.setTask(task)'></td>
-        <td><input type='button' value='delete' ng-really-click='vm.TasksService.removeTask(task.id);vm.showTasks();' ng-really-message='Are you sure, you want to delete task "{{task.title}}"?'></td>
+        <td><input type='button' value='delete' really-click='vm.removeTask(task.id);' really-message='Are you sure, you want to delete task "{{task.title}}"?'></td>
       </tr>
     </tbody>
   </table>

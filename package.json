@@ -31,7 +31,6 @@
     "karma-jasmine-html-reporter": "^0.1.8",
     "karma-jshint-preprocessor": "0.0.6",
     "karma-phantomjs-launcher": "^0.2.1",
-    "karma-sass-preprocessor": "0.0.1",
     "normalize.css": "^3.0.3",
     "phantomjs": "^1.9.19"
   },
